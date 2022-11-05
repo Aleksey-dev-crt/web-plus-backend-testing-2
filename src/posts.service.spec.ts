@@ -20,11 +20,15 @@ describe('PostsService', () => {
     });
 
     it('should return all posts if called without options', () => {
-      // реализуйте тест-кейс
+      const foundedPosts = postsService.findMany()
+    
+      expect(foundedPosts.map(e => ({text: e.text}))).toEqual(posts);
     });
 
     it('should return correct posts for skip and limit options', () => {
-      // реализуйте тест-кейс
+      const foundedPosts = postsService.findMany({skip: 1, limit: 2})
+    
+      expect(foundedPosts.map(e => ({text: e.text}))).toEqual(posts.slice(1, -1));
     });
 
     // реализуйте недостающие тест-кейсы
